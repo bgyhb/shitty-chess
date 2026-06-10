@@ -1,8 +1,8 @@
 namespace shitty_chess;
 
-public class Bishop : Piece
+public class Knight : Piece
 {
-    public Bishop(Chessboard chessboard) : base(chessboard)
+    public Knight(Chessboard chessboard) : base(chessboard)
     {
     }
 

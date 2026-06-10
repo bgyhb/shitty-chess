@@ -6,5 +6,12 @@ public abstract class Piece
     public required char Symbol {get; init;}
     public required Color Color {get; init;}
     
-    public abstract List<string> GetPossibleMoves(Board board);
+    private Chessboard _chessboard;
+    public Piece(Chessboard chessboard)
+    {
+        _chessboard = chessboard;
+    }
+    
+    public abstract List<string> GetPossibleMoves();
+    public abstract void Move();
 }

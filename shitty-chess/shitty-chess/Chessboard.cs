@@ -1,17 +1,17 @@
 namespace shitty_chess;
 
-public class Board
+public class Chessboard
 {
     private readonly string [] lines = ["a","b","c","d","e","f","g","h"];
-    public readonly string [,] TheBoard = new string[8,8];
+    public static readonly string [,] Board = new string[8,8];
 
-    public Board()
+    public Chessboard()
     {
         for (int i = 0; i < 8; i++)
         {
             for (int j = 0; j < 8; j++)
             {
-                TheBoard[i, j] = $"{lines[j]}{8-i}";
+                Board[i, j] = $"{lines[j]}{8-i}";
             }
         }
     }
@@ -23,7 +23,7 @@ public class Board
         {
             for (int j = 0; j < 8; j++)
             {
-                result += TheBoard[i, j] + " ";
+                result += Board[i, j] + " ";
             }
             result += Environment.NewLine;
         }
