@@ -5,7 +5,19 @@ namespace shitty_chess;
 public class Chessboard
 {
     private readonly string [] lines = ["a","b","c","d","e","f","g","h"];
-    public static readonly string [,] Board = new string[8,8];
+    private (string position, Piece? piece)[,] board = new (string, Piece?)[8,8];
+
+    public (string position, Piece? piece)[,] Board
+    {
+        get
+        {
+            return board;
+        }
+        set
+        {
+            board = value;
+        }
+    }
 
     public Chessboard()
     {
@@ -13,12 +25,42 @@ public class Chessboard
         {
             for (int j = 0; j < 8; j++)
             {
-                Board[i, j] = $"{lines[j]}{8-i}";
+                board[i, j] = ($"{lines[j]}{8-i}", null);
             }
         }
     }
 
-    public void DrawBoard()
+    public string this[int i, int j]
+    {
+        get => board[i, j].position;
+    }
+
+    public Piece? this[string position]
+    {
+        get
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (board[i, j].position == position) return board[i, j].piece;
+                }
+            }
+            return null;
+        }
+        set
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (board[i, j].position == position) board[i, j].piece = value;
+                }
+            }
+        }
+    }
+
+    public void Draw()
     {
         Style whiteSquare = new Style(background: Spectre.Console.Color.Gray);
         Style blackSquare = new Style(background: Spectre.Console.Color.Black);
@@ -44,7 +86,8 @@ public class Chessboard
             
             for (int j = 0; j < 8; j++)
             {
-                row[j+1] = isWhite ? new Text($"{Board[i, j]}", whiteSquare) : new Text($"{Board[i, j]}", blackSquare);
+                row[j+1] = isWhite ? new Text($"{Board[i, j].position}", whiteSquare) : 
+                                     new Text($"{Board[i, j].position}", blackSquare);
                 isWhite = !isWhite;
             }
             
