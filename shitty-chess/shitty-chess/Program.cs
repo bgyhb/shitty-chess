@@ -6,6 +6,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        ConsoleHelper.DrawBoard();
+        
+        Chessboard chessboard = new Chessboard();
+        chessboard.DrawBoard();
     }
 }
