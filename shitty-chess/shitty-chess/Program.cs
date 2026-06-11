@@ -1,11 +1,13 @@
-﻿namespace shitty_chess;
+﻿using shitty_chess.Game;
+
+namespace shitty_chess;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Board board = new Board();
-        Console.WriteLine(board.ToString());
         
+        Chessboard chessboard = new Chessboard();
+        chessboard.DrawBoard();
     }
 }
