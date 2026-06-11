@@ -2,10 +2,10 @@ namespace shitty_chess;
 
 public class Bishop : Piece
 {
-    public Bishop(Chessboard chessboard) : base(chessboard)
+    public Bishop()
     {
+        Symbol = 'B';
     }
-
     public override List<string> GetPossibleMoves()
     {
         throw new NotImplementedException();

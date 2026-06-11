@@ -86,8 +86,8 @@ public class Chessboard
             
             for (int j = 0; j < 8; j++)
             {
-                row[j+1] = isWhite ? new Text($"{Board[i, j].position}", whiteSquare) : 
-                                     new Text($"{Board[i, j].position}", blackSquare);
+                row[j+1] = isWhite ? new Text($"{Board[i, j].piece?.ToString() ?? " "} ", whiteSquare) : 
+                                     new Text($"{Board[i, j].piece?.ToString() ?? " "}", blackSquare);
                 isWhite = !isWhite;
             }
             
