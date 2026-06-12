@@ -2,9 +2,11 @@ namespace shitty_chess;
 
 public class Pawn : Piece
 {
-    public Pawn()
+    public Pawn(PieceColor color)
     {
-        Symbol = 'P';
+        LetterSymbol = 'P';
+        PieceColor = color;
+        FigureSymbol = color ==  PieceColor.White ? Symbols.WhitePawn : Symbols.BlackPawn;
     }
     public override List<string> GetPossibleMoves()
     {

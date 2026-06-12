@@ -2,9 +2,11 @@ namespace shitty_chess;
 
 public class Bishop : Piece
 {
-    public Bishop()
+    public Bishop(PieceColor color)
     {
-        Symbol = 'B';
+        LetterSymbol = 'B';
+        PieceColor = color;
+        FigureSymbol = color == PieceColor.White ? Symbols.WhiteBishop : Symbols.BlackBishop;
     }
     public override List<string> GetPossibleMoves()
     {

@@ -2,9 +2,11 @@ namespace shitty_chess;
 
 public class Queen : Piece
 {
-    public Queen()
+    public Queen(PieceColor color)
     {
-        Symbol = 'Q';
+        LetterSymbol = 'Q';
+        PieceColor = color;
+        FigureSymbol = color == PieceColor.White ? Symbols.WhiteQueen : Symbols.BlackQueen;
     }
     public override List<string> GetPossibleMoves()
     {

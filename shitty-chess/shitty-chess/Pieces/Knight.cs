@@ -2,9 +2,11 @@ namespace shitty_chess;
 
 public class Knight : Piece
 {
-    public Knight()
+    public Knight(PieceColor color)
     {
-        Symbol = 'N';
+        LetterSymbol = 'N';
+        PieceColor = color;
+        FigureSymbol = color ==  PieceColor.White ? Symbols.WhiteKnight : Symbols.BlackKnight;
     }
     public override List<string> GetPossibleMoves()
     {

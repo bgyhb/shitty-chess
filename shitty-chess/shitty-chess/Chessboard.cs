@@ -62,21 +62,22 @@ public class Chessboard
 
     public void Draw()
     {
-        Style whiteSquare = new Style(background: Spectre.Console.Color.Gray);
-        Style blackSquare = new Style(background: Spectre.Console.Color.Black);
+        Style whiteSquare = new Style(background: Color.MediumPurple4);
+        Style blackSquare = new Style(background: Color.Gray7);
+        
         
         Table board =  new Table();
         board.Border(TableBorder.None).ShowRowSeparators = true;
         
-        board.AddColumn(" ");
-        board.AddColumn("[bold]a[/]");
-        board.AddColumn("[bold]b[/]");
-        board.AddColumn("[bold]c[/]");
-        board.AddColumn("[bold]d[/]");
-        board.AddColumn("[bold]e[/]");
-        board.AddColumn("[bold]f[/]");
-        board.AddColumn("[bold]g[/]");
-        board.AddColumn("[bold]h[/]");
+        board.AddColumn(" ", col => col.Width(10).RightAligned());
+        board.AddColumn("[bold] a[/]");
+        board.AddColumn("[bold] b[/]");
+        board.AddColumn("[bold] c[/]");
+        board.AddColumn("[bold] d[/]");
+        board.AddColumn("[bold] e[/]");
+        board.AddColumn("[bold] f[/]");
+        board.AddColumn("[bold] g[/]");
+        board.AddColumn("[bold] h[/]");
         
         bool isWhite = true;
         for (int i = 0; i < 8; i++)
@@ -86,8 +87,8 @@ public class Chessboard
             
             for (int j = 0; j < 8; j++)
             {
-                row[j+1] = isWhite ? new Text($"{Board[i, j].piece?.ToString() ?? " "} ", whiteSquare) : 
-                                     new Text($"{Board[i, j].piece?.ToString() ?? " "}", blackSquare);
+                row[j+1] = isWhite ? new Text($" {Board[i, j].piece?.ToString() ?? " "} ", whiteSquare) : 
+                                     new Text($" {Board[i, j].piece?.ToString() ?? " "} ", blackSquare);
                 isWhite = !isWhite;
             }
             
@@ -95,7 +96,11 @@ public class Chessboard
             isWhite = !isWhite;
         }
         
-        AnsiConsole.Write(board);
+        Panel panel = new Panel(board)
+            .Header("[orange4_1]Play chess[/]")
+            .BorderColor(Color.Orange4_1);
+        
+        AnsiConsole.Write(panel);
     }
 
     public override string ToString()

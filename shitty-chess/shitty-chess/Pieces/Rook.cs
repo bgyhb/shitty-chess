@@ -2,9 +2,11 @@ namespace shitty_chess;
 
 public class Rook : Piece
 {
-    public Rook()
+    public Rook(PieceColor color)
     {
-        Symbol = 'R';
+        LetterSymbol = 'R';
+        PieceColor = color;
+        FigureSymbol = color == PieceColor.White ? Symbols.WhiteRook : Symbols.BlackRook;
     }
     public override List<string> GetPossibleMoves()
     {
